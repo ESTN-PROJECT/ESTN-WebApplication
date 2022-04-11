@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+
+    {% if is_granted('ROLE_USER') == false %}
+
+<div class="login_body">
+    <div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+            <div class="item">
+                <div class="img-fill">
+                    <img src="{{ asset('pictures/3.jpg') }}" alt="" width="100%" height="auto">
+                    <div class="text-content">
+                        <div class="dark">
+
+                            {{ form_start(registrationForm,{'attr': {'novalidate': 'novalidate'} } ) }}
+                            <div class="log">
+                                <h2>JOIN
+                                    <a style="color: #42060C;" href="" class="logo">
+                                        ESTN
+                                    </a>
+                                    !
+                                </h2>
+                                <br/>
+
+
+
+                                {{ form_row(registrationForm.email ,{'attr': {'class': 'form-control'} }) }}
+                                <br />
+
+                                {{ form_row(registrationForm.username ,{'attr': {'class': 'form-control'} }) }}
+
+                                {{ form_row(registrationForm.plainPassword, {label: ' ' ,'attr': {'class': 'form-control'} }) }}
+                                {{ form_row(registrationForm.ville  ,{'attr': {'class': 'form-control'} }) }}
+
+                                {{ form_row(registrationForm.rank ,{'attr': {'class': 'form-control'} }) }}
+                                {{ form_row(registrationForm.roles) }}
+
+                                {{ form_row(registrationForm.agreeTerms) }}
+
+
+                                <button style="background-color: #42060C ; border-color: #42060C" type="submit" class="btn btn-lg btn-primary">Register</button>
+                                <br/>
+                                <a href="{{ path("app_login") }}">
+                                    <br/>
+
+                                    <span style="color:white;"
+                                          class="form-toggle">Already have an account!</span>
+                                </a>
+                            </div>
+                            {{ form_end(registrationForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+{% if app.user %}
+    <div class="col s12 m6 l6 offset-m3 offset-l3">
+        <h1>{{ app.user.username }} this is your profile, <a href="{{ path('app_logout') }}">logout now</a> </h1>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+{% block head %}
+    {% block title %}ESTN
+    {% endblock %}
+
+
+{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px / 1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+
+    {% if is_granted('ROLE_USER') == false %}
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav
+                                class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="" class="logo">
+                                .ESTN
+                            </a>
+                            <!-- ***** Logo End ***** -->
+                            <!-- ***** Menu Start ***** -->
+                            <ul class="nav">
+
+                                <li class="scroll-to-section">
+                                    <a href="#about">About Us</a>
+                                </li>
+
+
+                            </ul>
+
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+        <div class="main-banner header-text" id="top">
+            <div
+                    class="Modern-Slider">
+
+                <!-- Item -->
+                <div class="col-md-12 item">
+                    <div class="img-fill">
+                        <img src="{{ asset('pictures/2.jpg') }}" alt="">
+                        <div class="text-content">
+
+                            <h5>ESTN would be glad if you join it !</h5>
+                            <a href="{{ path( 'app_login') }} " class="main-stroked-button">Log In</a>
+                            <a href="{{ path( 'app_register') }} " class="main-filled-button">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- // Item -->
+
+            </div>
+
+        </div>
+
+
+        <!-- // Item -->
+
+        <!-- ***** About Area Starts ***** -->
+
+
+        <!-- ***** About Area Starts ***** -->
+        <section class="section" id="about" style="background-color: white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="left-text-content">
+                            <br/>
+                            <div class="section-heading">
+                                <h2 style="color: black">Let's discover ESTN together ! </h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="service-item">
+                                        <img src="{{ asset('pictures/shop.png') }}" alt="">
+                                        <h4 style="color: black" >Shop</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="service-item">
+                                        <img src="{{ asset('pictures/events.png') }}" width="100%" height="auto" alt="">
+                                        <h4 style="color: black" >Events</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="service-item">
+                                        <img src="{{ asset('pictures/news.png') }}" width="100%" height="auto" alt="">
+                                        <h4 style="color: black">News</h4>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="service-item">
+                                        <img src="{{ asset('pictures/tournament.png') }}" width="100%" height="auto"
+                                             alt="">
+                                        <h4 style="color: black">Scrims</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <a href="{{ path( 'app_register') }} " class="main-button-icon">
+                                        Join Us
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <div class="right-text-content">
+                            <p><a rel="nofollow noopener" href="#" target="_parent">ESTN</a> is an esports platform that
+                                <br>allows you to improve your gaming skills through joining scrims with new people,
+                                participating in gaming events, buying gaming products, checking and discussing gaming
+                                news
+                                <br><br><br> "Gaming related content will redefine entertainment and I am looking
+                                forward to leading the way." <b> Dr. Disrespect.</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ***** About Area Ends ***** -->
+
+
+    {% endif %}
+{% endblock %}
