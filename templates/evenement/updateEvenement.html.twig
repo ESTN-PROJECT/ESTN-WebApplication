@@ -1,0 +1,34 @@
+{% block body %}
+    <div class="row">
+
+
+    <!-- General Form Elements -->
+    {{ form_start(event) }}
+    <label for="inputText" class="col-sm-4 col-form-label">Event Title</label>
+    <div class="col-sm-10">
+        {{ form_widget(event.titreEvent,{'attr':{'class':'form-control'}}) }}
+    </div>
+
+
+    <label for="inputText" class="col-sm-4 col-form-label">Event Description</label>
+    <div class="col-sm-10">
+        {{ form_widget(event.descriptionEvent,{'attr':{'class':'form-control'}}) }}
+
+    </div>
+    <label for="inputText" class="col-sm-4 col-form-label">Event Date</label>
+    <div class="col-sm-10">
+        {{ form_widget(event.dateEvent,{'attr':{'class':'form-control'}}) }}
+    </div>
+
+    <br/>
+    <div class="col-sm-10" style="display: flex;align-items: center;justify-content: center">
+
+    </div>
+
+    {{ form_end(event) }}
+
+
+
+
+
+{% endblock %}
