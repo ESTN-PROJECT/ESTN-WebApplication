@@ -1,4 +1,7 @@
 
+
+
+
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -246,6 +249,11 @@
                 </div>
             </div>
         </div>
+        {% block body %}
+
+
+
+        {% endblock %}
         <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="card">
@@ -274,14 +282,14 @@
             </div>
         </div>
     </div>
-</main>
+
 <script src="{{ asset('dashboard/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('dashboard/js/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset('dashboard/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('dashboard/js/dataTables.bootstrap5.min.js') }}"></script>
 <script src="{{ asset('dashboard/js/script.js') }}"></script>
 
-</body>
+
 
 
 
