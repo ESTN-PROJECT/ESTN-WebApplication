@@ -3,7 +3,7 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    {% if is_granted('ROLE_USER') == false %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') == false %}
 
         <div class="login_body">
             <div class="main-banner header-text" id="top">
@@ -77,6 +77,8 @@
                                                 <span style="color:white;"
                                                       class="form-toggle">Not Registered Yet?</span>
                                             </a>
+                                            <br />
+                                            <a href="{{ path("app_forgot_password_request") }}">forget password!</a>
                                         </div>
                                     </form>
 

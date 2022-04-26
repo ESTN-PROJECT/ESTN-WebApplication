@@ -73,13 +73,6 @@
 
 
 
-
-
-
-
-
-
-
     {% endblock %}
 
     {% block javascripts %}
@@ -194,6 +187,21 @@
     <script  src="{{ asset('assets/js/goodgames.min.js') }}></script>
 
 <script src="{{ asset('assets/js/goodgames-init.js') }}></script>
+!-- Flashy depends on jQuery -->
+
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+    <!-- Include Flashy default partial -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+    <!-- Include Flashy default partial -->
 
 <!-- END: Scripts -->
 

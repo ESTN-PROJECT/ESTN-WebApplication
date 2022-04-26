@@ -13,6 +13,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptcha;
+use Symfony\Component\Validator\Constraints\Valid;
 
 class RegistrationFormType extends AbstractType
 {
@@ -25,6 +28,29 @@ class RegistrationFormType extends AbstractType
                     'Mahdia' => 'Mahdia',
                     'Sousse' => 'Sousse',
                     'Monastir' => 'Monastir',
+                    'Tunis' => 'Tunis',
+                    'Ariana' => 'Ariana',
+                    'Ben Arous' => 'Ben Arous',
+                    'Mannouba' => 'Mannouba',
+                    'Bizerte' => 'Bizerte',
+                    'Nabeul' => 'Nabeul',
+                    'Béja' => 'Béja',
+                    'Jendouba' => 'Jendouba',
+                    'Zaghouan' => 'Zaghouan',
+                    'Siliana' => 'Siliana',
+                    'Kef' => 'Kef',
+                    'Kasserine' => 'Kasserine',
+                    'Sidi Bouzid' => 'Sidi Bouzid',
+                    'Kairouan' => 'Kairouan',
+                    'Gafsa' => 'Gafsa',
+                    'Sfax' => 'Sfax',
+                    'Gabès' => 'Gabès',
+                    'Médenine' => 'Médenine',
+                    'Tozeur' => 'Tozeur',
+                    'Kebili' => 'Kebili',
+                    'Tataouine' => 'Tataouine',
+
+
                 ],
                 'label' => 'Pick your city :'
             ])
@@ -74,7 +100,17 @@ class RegistrationFormType extends AbstractType
                 'expanded' => true,
                 'required' => true,
                 'label' => false,
-            ]);
+            ])
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptchaUserRegistration',
+                'constraints' => [
+                    new ValidCaptcha([
+                        'message' => 'Invalid captcha, please try again',
+                    ]),
+                ],
+                'label' => false,
+            ))
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

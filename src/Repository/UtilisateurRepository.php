@@ -21,10 +21,11 @@ class UtilisateurRepository extends ServiceEntityRepository
         parent::__construct($registry, User::class);
     }
 
-    /**
-     * @throws ORMException
-     * @throws OptimisticLockException
-     */
+    /*
+        /**
+         * @throws ORMException
+         * @throws OptimisticLockException
+         */
     public function add(User $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
@@ -45,23 +46,57 @@ class UtilisateurRepository extends ServiceEntityRepository
         }
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return User[] Returns an array of User objects
+     */
+
+    public function DisplayUsers()
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+            ->Where('u.isdeleted = 0')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
 
+    public function orderByMail()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->orderBy('s.email', 'ASC')
+            ->setMaxResults(30);
+        return $qb->getQuery()
+            ->getResult();
+    }
+
+    public function orderById()
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->orderBy('s.id', 'ASC')
+            ->setMaxResults(30);
+        return $qb->getQuery()
+            ->getResult();
+    }
+
+
+    public function searchUser($name)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.username LIKE :x')
+            ->setParameter('x', '%' . $name . '%')
+            ->getQuery()
+            ->execute();
+    }
+
+/*
+    public function findCoachs()
+    {
+        $entityManager = $this->getEntityManager();
+        $e ="ROLE_COACH";
+        $query = $entityManager
+            ->createQuery("SELECT s FROM APP\Entity\User s
+             WHERE s.roles ="."ROLE_COACH");
+        return $query->getResult();
+    }
+*/
     /*
     public function findOneBySomeField($value): ?User
     {

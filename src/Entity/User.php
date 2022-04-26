@@ -99,8 +99,18 @@ class User implements UserInterface
     const ROLES = array(
         'Member' => 'ROLE_MEMBER',
         'Coach' => 'ROLE_COACH',
-
     );
+    protected $captchaCode;
+
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
 
     public function getId(): ?int
     {
@@ -236,5 +246,12 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+    public function serialize() {
+        return serialize($this->id);
+    }
+
+    public function unserialize($data) {
+        $this->id = unserialize($data);
     }
 }

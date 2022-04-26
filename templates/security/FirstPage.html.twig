@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block body %}
+
     <style>
         .example-wrapper {
             margin: 1em auto;
@@ -21,7 +22,7 @@
         }
     </style>
 
-    {% if is_granted('ROLE_USER') == false %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') == false %}
         <!-- ***** Header Area Start ***** -->
         <header class="header-area header-sticky">
             <div class="container">

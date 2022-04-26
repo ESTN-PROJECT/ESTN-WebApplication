@@ -5,7 +5,7 @@
 {% block body %}
 
 
-    {% if is_granted('ROLE_USER') == false %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') == false %}
 
 <div class="login_body">
     <div class="main-banner header-text" id="top">
@@ -34,11 +34,12 @@
                                 {{ form_row(registrationForm.username ,{'attr': {'class': 'form-control'} }) }}
 
                                 {{ form_row(registrationForm.plainPassword, {label: ' ' ,'attr': {'class': 'form-control'} }) }}
-                                {{ form_row(registrationForm.ville  ,{'attr': {'class': 'form-control'} }) }}
+                               <br />
+                                {{ form_row(registrationForm.ville  ,{'attr': {'class': 'form-control-sm'} }) }}
 
-                                {{ form_row(registrationForm.rank ,{'attr': {'class': 'form-control'} }) }}
+                                {{ form_row(registrationForm.rank ,{'attr': {'class': 'form-control-sm'} }) }}
                                 {{ form_row(registrationForm.roles) }}
-
+                                {{ form_row(registrationForm.captchaCode) }}
                                 {{ form_row(registrationForm.agreeTerms) }}
 
 
