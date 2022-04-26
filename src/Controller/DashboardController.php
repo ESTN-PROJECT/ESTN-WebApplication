@@ -23,56 +23,46 @@ class DashboardController extends AbstractController
         ]);
     }
     /**
-     * @Route("/stats", name="stats")
+     * @Route("/stat", name="stat")
      */
-    public function stat(Categorie $categorie , CategorieRepository  $repository,\Symfony\Component\HttpFoundation\Request $request)
+    public function evenement_stat(CategorieRepository   $categorieRepository): Response
     {
+        $nbrs[] = array();
+
+        $e1 = $categorieRepository->find_Nb_Rec_Par_Status("78");
+        dump($e1);
+        $nbrs[] = $e1[0][1];
 
 
-        $repository = $this->getDoctrine()->getRepository(Categorie::class);
-        $categorie = $repository->findAll();
+        $e2 = $categorieRepository->find_Nb_Rec_Par_Status("16");
+        dump($e2);
+        $nbrs[] = $e2[0][1];
 
-        $em = $this->getDoctrine()->getManager();
+        $e3 = $categorieRepository->find_Nb_Rec_Par_Status("45");
+        dump($e3);
+        $nbrs[] = $e3[0][1];
+        /*
+                $e3=$activiteRepository->find_Nb_Rec_Par_Status("Diffence");
+                dump($e3);
+                $nbrs[]=$e3[0][1];
+        */
 
-        $cat1=0;
-        $cat2=0;
-        $cat3=0;
-        $cat4=0;
+        dump($nbrs);
+        reset($nbrs);
+        dump(reset($nbrs));
+        $key = key($nbrs);
+        dump($key);
+        dump($nbrs[$key]);
 
+        unset($nbrs[$key]);
 
+        $nbrss = array_values($nbrs);
+        dump(json_encode($nbrss));
 
-        if ( $categorie->getQuantite()=="test"): {
-
-            $cat1+=1;
-        }
-        else:{
-
-            $cat2+=1 ;
-        } endif;
-
-
-
-        $data=array_map(function (Categorie $item){
-            return [$item->getNomCategorie(),$item->getQuantite()->count()];
-        },$repository->findAll());
-
-
-        array_unshift($data,['Task', 'Hours per Day']);
-
-
-
-        $pieChart = new PieChart();
-        $pieChart->getData()->setArrayToDataTable($data);
-        $pieChart->getOptions()->setTitle('Listes categorie ');
-        $pieChart->getOptions()->setHeight(500);
-        $pieChart->getOptions()->setWidth(900);
-        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
-        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
-        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
-        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
-        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
-
-        return $this->render('dashboard/stats.html.twig', array('piechart' => $pieChart));
+        return $this->render('dashboard/stat.html.twig', [
+            'nbr' => json_encode($nbrss),
+        ]);
     }
+
 
 }

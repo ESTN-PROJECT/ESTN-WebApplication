@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\File;
 use Knp\Component\Pager\PaginatorInterface;
+use Dompdf\Options;
+use Dompdf\Dompdf;
 
 class ProduitController extends Controller
 {
@@ -162,6 +164,48 @@ class ProduitController extends Controller
             'produit' => $produit,
         ]);
     }
+    /**
+     * @Route("/DownloadProduitsData", name="DownloadProduitsData")
+     */
+    public function DownloadProduitsData(ProduitRepository $repository)
+    {
+        $produits=$repository->findAll();
 
+        // On définit les options du PDF
+        $pdfOptions = new Options();
+        // Police par défaut
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->setIsRemoteEnabled(true);
+
+        // On instancie Dompdf
+        $dompdf = new Dompdf($pdfOptions);
+        $context = stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+        ]);
+        $dompdf->setHttpContext($context);
+
+        // On génère le html
+        $html = $this->renderView('produit/download.html.twig',
+            ['produits'=>$produits ]);
+
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        // On génère un nom de fichier
+        $fichier = 'Tableau des Produits.pdf';
+
+        // On envoie le PDF au navigateur
+        $dompdf->stream($fichier, [
+            'Attachment' => true
+        ]);
+
+        return new Response();
+    }
 
 }

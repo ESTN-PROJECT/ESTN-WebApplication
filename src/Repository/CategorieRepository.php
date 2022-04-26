@@ -58,4 +58,17 @@ class CategorieRepository extends ServiceEntityRepository
         return $qb->getQuery()
             ->getResult();
     }
+
+    public function find_Nb_Rec_Par_Status($type)
+    {
+
+        $em = $this->getEntityManager();
+
+        $query = $em->createQuery(
+            'SELECT DISTINCT  count(r.idCategorie) FROM   App\Entity\Categorie r  where r.quantite = :quantite   '
+        );
+        $query->setParameter('quantite', $type);
+        return $query->getResult();
+    }
+
 }
