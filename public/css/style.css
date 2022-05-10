@@ -1,0 +1,131 @@
+.primary {
+    background-color: #42060C;
+    color: #fff;
+}
+
+.navbar {
+    line-height: 0rem;
+}
+
+.form-group {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+
+.dark{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    background:inherit;
+    border-radius: 12px;
+    background-color:rgba(0,0,0,0.5);
+}
+.login_body{
+    color: white;
+}
+
+body{
+    background-color: #F8F9F9;
+}
+.blue {
+    background-color: #42060C;
+    color: #fff;
+}
+.pagination li.active {
+    background-color: #42060C;
+    color: #fff;
+}
+.grid-container {
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+  }
+  
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .fa-minus-circle{
+     color: red;
+  }
+.bg-dark {
+    background-color: #42060C!important;
+}
+.btn-outline-light {
+    background-color: #f8f9fa;
+}
+.d-flex {
+    display: flex!important;
+    margin-right: 300;
+    margin-top: 5;
+    margin-bottom: 5;
+
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #42060C;
+    border-color: #42060C;
+}
+a {
+    color: #42060C;
+    text-decoration: underline;
+}
+
+.btn-light {
+    color: #000;
+    background-color: #F8F9F9;
+    border-color: #F8F9F9;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .70rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+
+.btn {
+   
+    border-radius: 25px;
+}
+
+
+.fa-comment-dots{
+    color: #0d6efd;
+}
+
+.fa-cog{
+    color: white;
+}
+.fa-plus{
+    color: #0d6efd;
+}
+
+.fa-search{
+    color: #42060C;
+}
+
+.fa-sign-in-alt{
+    color: #0d6efd;
+}
