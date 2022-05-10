@@ -28,7 +28,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin", name="app_admin")
+     * @Route("/adminadmin", name="app_admin1")
      * @IsGranted("ROLE_ADMIN")
      */
     public function index(): Response

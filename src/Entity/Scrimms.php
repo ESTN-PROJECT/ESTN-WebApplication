@@ -42,6 +42,20 @@ class Scrimms
      */
     private $game;
 
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="date_debut", type="datetime", nullable=true)
+     */
+    private $dateDebut;
+
+    /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="date_fin", type="datetime", nullable=true)
+     */
+    private $dateFin;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,6 +93,30 @@ class Scrimms
     public function setGame(string $game): self
     {
         $this->game = $game;
+
+        return $this;
+    }
+
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->dateDebut;
+    }
+
+    public function setDateDebut(?\DateTimeInterface $dateDebut): self
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(?\DateTimeInterface $dateFin): self
+    {
+        $this->dateFin = $dateFin;
 
         return $this;
     }

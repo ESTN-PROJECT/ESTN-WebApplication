@@ -1,0 +1,18 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}New Discussion{% endblock %}
+
+{% block body %}
+    <h1>Create new Discussion</h1>
+<label>
+    <select class="form-control" name="types">
+        {% for forum in forums %}
+        <option>{{ forum.sujet }}</option>
+        {% endfor %}
+    </select>
+
+</label>
+    {{ include('discussion/_form.html.twig') }}
+
+    <a href="{{ path('app_discussion_index') }}">back to list</a>
+{% endblock %}

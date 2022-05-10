@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class SecurityController extends AbstractController
 {
 
@@ -100,7 +100,7 @@ class SecurityController extends AbstractController
         }
         $this->flashy->success('Your profile has been updated successfully', 'http://your-awesome-link.com');
         return $this->render("security/profileSetting.html.twig",
-            array("formUser" => $form->createView(),"formCoach" => $form2->createView()));
+            array("formUser" => $form->createView(), "formCoach" => $form2->createView()));
 
     }
 
@@ -116,13 +116,13 @@ class SecurityController extends AbstractController
         $form2 = $this->createForm(CoachFormType::class, $user);
 
         $form->handleRequest($request);
-        if ($form2->isSubmitted() && $form->isSubmitted() ) {
+        if ($form2->isSubmitted() && $form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->flush();
         }
         $this->flashy->success('Your profile has been updated successfully', 'http://your-awesome-link.com');
         return $this->render("security/profileSetting.html.twig",
-            array("formCoach" => $form->createView(),"formUser" => $form2->createView()));
+            array("formCoach" => $form->createView(), "formUser" => $form2->createView()));
 
     }
 
@@ -155,5 +155,70 @@ class SecurityController extends AbstractController
 
     }
 
+
+
+//json
+
+//temchi
+    /**
+     * @Route("/SignUpJson",name="SignUpJson")
+     */
+    public function SignUpUserJson(Request $request, NormalizerInterface $Normalizer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = new User();
+        $user->setUsername($request->get('username'));
+        $user->setEmail($request->get('email'));
+        $user->setPassword($request->get('password'));
+        $em->persist($user);
+        $em->flush();
+        $jsonContent = $Normalizer->normalize($user, 'json', ['groups' => 'post:read']);
+        return new Response(json_encode($jsonContent));
+
+    }
+
+//temchi
+    /**
+     * @Route("/deleteUserJson/{id}",name="deleteUserJson")
+     */
+    public function deleteUserJson(Request $request, $id, NormalizerInterface $Normalizer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($id);
+       // $user->setIsDeleted(1);
+        $em->remove($user);
+        $em->flush();
+        $jsonContent = $Normalizer->normalize($user, 'json', ['groups' => 'post:read']);
+        return new Response("Your account has been deleted successfully". json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/updateUserJson/{id}",name="updateUserJson")
+     */
+    public function updateUserJson(Request $request, $id, NormalizerInterface $Normalizer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($id);
+        $user->setUsername($request->get('username'));
+        $user->setEmail($request->get('email'));
+        $em->flush();
+        $jsonContent = $Normalizer->normalize($user, 'json', ['groups' => 'post:read']);
+        return new Response("Your account has been updated successfully", json_encode($jsonContent));
+
+    }
+
+
+    /**
+     * @Route("/User/{id}",name="updateUserJson")
+     */
+    public function DisplayUser(Request $request, $id, NormalizerInterface $Normalizer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->find($id);
+
+        $jsonContent = $Normalizer->normalize($user, 'json', ['groups' => 'post:read']);
+        return new Response( json_encode($jsonContent));
+
+    }
 
 }

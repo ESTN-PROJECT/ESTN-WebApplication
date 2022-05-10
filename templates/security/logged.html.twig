@@ -65,53 +65,15 @@
 
                         <li>
                             <a href="{{ path('profile') }}" data-toggle="modal" data-target="#modalLogin">
-                                <span class="fa fa-user"> </span> {{ app.user.username  }}
+                                <span class="fa fa-user"> </span> {{ app.user.username }}
                             </a>
                         </li>
 
 
                         <li>
-                    <span class="nk-cart-toggle">
-                        <span class="fa fa-shopping-cart"></span>
-                        <span class="nk-badge">27</span>
-                    </span>
-                            <div class="nk-cart-dropdown">
+                            <a href="{{ asset('/panier') }}"><i class="fa fa-shopping-cart"></i></a>
 
-                                <div class="nk-widget-post">
-                                    <a href="store-product.html" class="nk-post-image">
-                                        <img src="assets/images/product-5-xs.jpg" alt="In all revolutions of">
-                                    </a>
-                                    <h3 class="nk-post-title">
-                                        <a href="#" class="nk-cart-remove-item"><span class="ion-android-close"></span></a>
-                                        <a href="store-product.html">In all revolutions of</a>
-                                    </h3>
-                                    <div class="nk-gap-1"></div>
-                                    <div class="nk-product-price">€ 23.00</div>
-                                </div>
-
-                                <div class="nk-widget-post">
-                                    <a href="store-product.html" class="nk-post-image">
-                                        <img src="assets/images/product-7-xs.jpg" alt="With what mingled joy">
-                                    </a>
-                                    <h3 class="nk-post-title">
-                                        <a href="#" class="nk-cart-remove-item"><span class="ion-android-close"></span></a>
-                                        <a href="store-product.html">With what mingled joy</a>
-                                    </h3>
-                                    <div class="nk-gap-1"></div>
-                                    <div class="nk-product-price">€ 14.00</div>
-                                </div>
-
-                                <div class="nk-gap-2"></div>
-                                <div class="text-center">
-                                    <a href="store-checkout.html"
-                                       class="nk-btn nk-btn-rounded nk-btn-color-main-1 nk-btn-hover-color-white">Proceed
-                                        to Checkout</a>
-                                </div>
-
-
-                            </div>
                         </li>
-
 
 
                         <a href="{{ path('app_logout') }}" data-toggle="modal" data-target="#modalLogin">
@@ -142,13 +104,13 @@
                 <div class="nk-nav-table">
 
                     <a href="" class="nk-nav-logo">
-                        <img src="pictures/logo.png" alt="GoodGames" width="100">
+                        <img src="pictures/logo.png" alt="ESTN" width="100">
                     </a>
 
                     <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
 
                         <li class=" nk-drop-item">
-                            <a href="">
+                            <a href="{{ path('app_eparticipation') }}">
                                 Events
 
                             </a>
@@ -214,88 +176,45 @@
                             </ul>
                         </li>
                         <li class=" nk-drop-item">
-                            <a href="">
-                                Forum
+                            <a href="{{ path('front_index') }}">
+
+                                News
 
                             </a>
-                            <ul class="dropdown">
 
-                                <li>
-                                    <a href="">
-                                        News
-
-                                    </a>
-                                </li>
-                                <li class=" nk-drop-item">
-                                    <a href="">
-                                        Blog With Sidebar
-
-                                    </a>
-                                    <ul class="dropdown">
-
-                                        <li>
-                                            <a href="">
-                                                Blog Grid
-
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                Blog List
-
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Blog Fullwidth
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Blog Article
-
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
+                        <li class=" nk-drop-item">
+                            <a href="{{ path('front_index_article') }}">
+
+                                Articles
+
+                            </a>
+                        </li>
+
                         <li>
-                            <a href="">
+                            <a href="{{ path('scrimms') }}">
                                 Scrims
 
                             </a>
                         </li>
                         <li class=" nk-drop-item">
-                            <a href="">
-                                Tournaments
+                            <a href="{{ path('afficherFr') }}">
+
+                                Teams
 
                             </a>
-                            <ul class="dropdown">
 
-                                <li>
-                                    <a href="">
-                                        Tournament
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Teams
-
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        Teammate
-
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class=" nk-drop-item">
-                            <a href="">
+                            <a href="{{ path('addentrainement') }}">
+
+                                Training
+
+                            </a>
+
+                        </li>
+                        <li class=" nk-drop-item">
+                            <a href="{{ path('afficherPro') }}">
                                 Store
 
                             </a>
@@ -406,7 +325,7 @@
                         </div>
                         <div class="nk-feature-cont">
                             <h3 class="nk-feature-title"><a href="#">PC</a></h3>
-                            <h4 class="nk-feature-title text-main-1"><a href="#">View Games</a></h4>
+                            <h4 class="nk-feature-title text-main-1"><a href="{{ path('affichejeuPc') }}">View Games</a></h4>
                         </div>
                     </div>
                 </div>
@@ -417,7 +336,7 @@
                         </div>
                         <div class="nk-feature-cont">
                             <h3 class="nk-feature-title"><a href="#">PS4</a></h3>
-                            <h4 class="nk-feature-title text-main-1"><a href="#">View Games</a></h4>
+                            <h4 class="nk-feature-title text-main-1"><a href="{{ path('affichejeuF') }}">View Games</a></h4>
                         </div>
                     </div>
                 </div>
@@ -428,7 +347,8 @@
                         </div>
                         <div class="nk-feature-cont">
                             <h3 class="nk-feature-title"><a href="#">Xbox</a></h3>
-                            <h4 class="nk-feature-title text-main-1"><a href="#">View Games</a></h4>
+                            <h4 class="nk-feature-title text-main-1"><a href="{{ path('affichejeuXbox') }}">View Games</a></h4>
+
                         </div>
                     </div>
                 </div>

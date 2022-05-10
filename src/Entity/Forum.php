@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Forum
  *
- * @ORM\Table(name="forum")
+ * @ORM\Table(name="forum", indexes={@ORM\Index(name="idUser", columns={"idUser"})})
  * @ORM\Entity
  */
 class Forum
@@ -24,16 +24,26 @@ class Forum
     /**
      * @var string
      *
-     * @ORM\Column(name="sujet", type="string", length=100, nullable=false)
+     * @ORM\Column(name="sujet", type="string", length=255, nullable=false)
      */
     private $sujet;
 
     /**
      * @var bool|null
      *
-     * @ORM\Column(name="archive", type="boolean", nullable=true)
+     * @ORM\Column(name="archive", type="boolean", nullable=true, options={"default"="NULL"})
      */
-    private $archive;
+    private $archive = 'NULL';
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idUser", referencedColumnName="id")
+     * })
+     */
+    private $iduser;
 
     public function getId(): ?int
     {
@@ -64,5 +74,20 @@ class Forum
         return $this;
     }
 
+    public function getIduser(): ?User
+    {
+        return $this->iduser;
+    }
+
+    public function setIduser(?User $iduser): self
+    {
+        $this->iduser = $iduser;
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return $this->sujet;
+    }
 
 }

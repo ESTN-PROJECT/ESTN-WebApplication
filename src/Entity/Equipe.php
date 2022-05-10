@@ -70,6 +70,13 @@ class Equipe
      */
     private $jeu;
 
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="photo", type="string", length=300, nullable=true)
+     */
+    private $photo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -155,6 +162,18 @@ class Equipe
     public function setJeu(string $jeu): self
     {
         $this->jeu = $jeu;
+
+        return $this;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }

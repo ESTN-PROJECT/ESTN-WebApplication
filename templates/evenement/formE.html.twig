@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Event</h4>
+        <p class="card-description">
+
+        </p>
+        {{ form_start(event,{'attr':{'novalidate' :'novalidate'}})}}
+        <div class="form-group">
+            <label for="exampleInputTitle">Title</label>
+            {{ form_widget(event.titreEvent,{'att':{'class':'form-control'}}) }}
+            {{ form_errors(event.titreEvent,{'att':{'class':'text-danger'}}) }}
+
+        </div>
+        <div class="form-group">
+            <label for="exampleInputDescription">Description</label>
+            {{ form_widget(event.descriptionEvent,{'att':{'class':'form-control'}}) }}
+            {{ form_errors(event.descriptionEvent,{'att':{'class':'text-danger'}}) }}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputDate">Date</label>
+            {{ form_widget(event.dateEvent,{'att':{'class':'form-control'}}) }}
+            {{ form_errors(event.dateEvent,{'att':{'class':'text-danger'}}) }}
+        </div>
+
+
+
+        {{ form_end(event) }}
+        <button class="btn btn-light"> <a href="{{path('display_evenement')}}">Retour</a> </button>
+    </div>
+</div>

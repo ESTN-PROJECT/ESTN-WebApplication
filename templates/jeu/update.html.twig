@@ -1,0 +1,54 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+    <div class="row">
+    <div  style="display: flex;align-items: center;justify-content: center;margin-top: 150px; padding: 10px;">
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Update Game</h5>
+
+                <!-- General Form Elements -->
+                {{ form_start(formj) }}
+                <label for="inputText" class="col-sm-4 col-form-label">Nom</label>
+                <div class="col-sm-12">
+                    {{ form_widget(formj.nom,{'attr':{'class':'form-control'}}) }}
+                </div>
+
+                <label for="inputText" class="col-sm-5 col-form-label">categorie</label>
+                <div class="col-sm-12">
+                    {{ form_widget(formj.categorie,{'attr':{'class':'form-control'}}) }}
+                </div>
+
+
+                    <label for="inputText" class="col-sm-5 col-form-label">Description</label>
+                    <div class="col-sm-12">
+                        {{ form_widget(formj.description,{'attr':{'class':'form-control'}}) }}
+                    </div>
+
+
+
+                    <br/>
+
+                    <div class="col-sm-18" style="display: flex;align-items: center;justify-content: center">
+
+                        {{ form_widget(formj.image) }}
+                    </div>
+                    <br/>
+                    <div class="col-sm-1" style="display: flex;align-items: center;justify-content: center">
+
+                        {{ form_widget(formj.ajouter,{'attr':{'class':'btn btn-primary'}}) }}
+                    </div>
+
+                    {{ form_end(formj) }}
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

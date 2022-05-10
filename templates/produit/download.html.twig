@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau des Produits</title>
+</head>
+<body >
+<h1 style="text-align: center; color: red">ESTN</h1>
+<h2 style="text-align: center">Tableau des Produits</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+
+        <th >Nom</th>
+
+        <th >Prix</th>
+        <th >Description</th>
+        <th >categorie</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in produits %}
+        <tr>
+            <td>{{ p.nom }}</td>
+            <td>{{ p.prix }}</td>
+            <td>{{ p.Description }}</td>
+
+            <td>{{ p.categorie }}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>

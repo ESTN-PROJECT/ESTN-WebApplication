@@ -7,9 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Discussion
  *
- * @ORM\Table(name="discussion")
- * @ORM\Entity
+ * @ORM\Table(name="discussion", indexes={@ORM\Index(name="idUser", columns={"idUser"}), @ORM\Index(name="FK_Disscusion", columns={"idForum"})})
+ * @ORM\Entity(repositoryClass="App\Repository\DiscussionRepository")
  */
+
 class Discussion
 {
     /**
@@ -31,9 +32,29 @@ class Discussion
     /**
      * @var bool|null
      *
-     * @ORM\Column(name="archive", type="boolean", nullable=true)
+     * @ORM\Column(name="archive", type="boolean", nullable=true, options={"default"="NULL"})
      */
-    private $archive;
+    private $archive = 'NULL';
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idUser", referencedColumnName="id")
+     * })
+     */
+    private $iduser;
+
+    /**
+     * @var \Forum
+     *
+     * @ORM\ManyToOne(targetEntity="Forum")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idForum", referencedColumnName="id")
+     * })
+     */
+    private $idforum;
 
     public function getId(): ?int
     {
@@ -60,6 +81,37 @@ class Discussion
     public function setArchive(?bool $archive): self
     {
         $this->archive = $archive;
+
+        return $this;
+    }
+
+    public function getIduser(): ?User
+    {
+        return $this->iduser;
+    }
+
+    public function setIduser(?User $iduser): self
+    {
+        $this->iduser = $iduser;
+
+        return $this;
+    }
+
+    public function getIdforum(): ?Forum
+    {
+        return $this->idforum;
+    }
+
+    public function setForum(?Forum $idforum): self
+    {
+        $this->idforum = $idforum;
+
+        return $this;
+    }
+
+    public function setIdforum(?Forum $idforum): self
+    {
+        $this->idforum = $idforum;
 
         return $this;
     }

@@ -137,9 +137,9 @@
                     <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
 
                         <li class=" nk-drop-item">
-                            <a href="{{ path('desactivate', { 'id': app.user.id }) }}"
-                               onclick="return confirm('ARE YOU SURE?')">
-                                Delete My Account
+                            <a href="{{ path('profile_settings',{ 'id': app.user.id }) }}">
+                                Settings and Privacy
+
                             </a>
 
                         </li>

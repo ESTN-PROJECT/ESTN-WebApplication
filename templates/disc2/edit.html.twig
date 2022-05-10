@@ -1,0 +1,13 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Discussion{% endblock %}
+
+{% block body %}
+    <h1>Edit Discussion</h1>
+
+    {{ include('disc2/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_disc2_index') }}">back to list</a>
+
+    {{ include('disc2/_delete_form.html.twig') }}
+{% endblock %}
